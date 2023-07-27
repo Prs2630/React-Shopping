@@ -9,8 +9,8 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { CardContext } from "../contexts/CardContextProvider";
 
 const Card = (props) => {
-  const { dispatch } = useContext(CardContext);
-  const { image, title, price, quantity, id } = props.data;
+  const { dispatch } = useContext(CardContext); // Accessing the dispatch function from the CardContext
+  const { image, title, price, quantity, id } = props.data; // Extracting data from the props
 
   return (
     <Box component="div" className="cards-container">
@@ -39,7 +39,7 @@ const Card = (props) => {
           {quantity > 1 ? (
             <IconButton
               onClick={() =>
-                dispatch({ type: "DECREASE", payload: props.data })
+                dispatch({ type: "DECREASE", payload: props.data }) // Dispatching a 'DECREASE' action with the payload as the card data
               }
               aria-label="RemoveCircleIcon"
               size="small"
@@ -49,7 +49,7 @@ const Card = (props) => {
           ) : (
             <IconButton
               onClick={() =>
-                dispatch({ type: "REMOVE_ITEM", payload: props.data })
+                dispatch({ type: "REMOVE_ITEM", payload: props.data }) // Dispatching a 'REMOVE_ITEM' action with the payload as the card data
               }
               aria-label="RemoveCircleIcon"
               size="small"
@@ -63,7 +63,9 @@ const Card = (props) => {
           <IconButton
             aria-label="AddCircleIcon"
             size="small"
-            onClick={() => dispatch({ type: "INCREASE", payload: props.data })}
+            onClick={() =>
+              dispatch({ type: "INCREASE", payload: props.data }) // Dispatching an 'INCREASE' action with the payload as the card data
+            }
           >
             <AddCircleIcon fontSize="inherit" />
           </IconButton>

@@ -19,17 +19,17 @@ import Loading from "./Loading";
 import Banner from "./Banner";
 
 const DetailsPage = () => {
-  const { state, dispatch } = useContext(CardContext);
-  const [currentProduct, setCurrentProduct] = useState([]);
+  const { state, dispatch } = useContext(CardContext); // Accessing the state and dispatch function from the CardContext
+  const [currentProduct, setCurrentProduct] = useState([]); // Setting up the state for the current product
 
   const GetCurrentProduct = async () => {
     const BASE_URL = "https://fakestoreapi.com/products";
-    const result = await axios.get(`${BASE_URL}/${id}`);
+    const result = await axios.get(`${BASE_URL}/${id}`); // Fetching the current product based on the ID
     return result.data;
   };
   useEffect(() => {
     const fetchAPI = async () => {
-      setCurrentProduct(await GetCurrentProduct());
+      setCurrentProduct(await GetCurrentProduct()); // Setting the current product data in the state
     };
     fetchAPI();
   }, []);
@@ -148,7 +148,7 @@ const DetailsPage = () => {
               {quantityCount(state, currentProduct.id) > 1 && (
                 <IconButton
                   onClick={() =>
-                    dispatch({ type: "DECREASE", payload: currentProduct })
+                    dispatch({ type: "DECREASE", payload: currentProduct }) // Dispatching a 'DECREASE' action with the payload as the current product
                   }
                   aria-label="RemoveCircleIcon"
                   size="large"
@@ -159,7 +159,7 @@ const DetailsPage = () => {
               {quantityCount(state, currentProduct.id) === 1 && (
                 <IconButton
                   onClick={() =>
-                    dispatch({ type: "REMOVE_ITEM", payload: currentProduct })
+                    dispatch({ type: "REMOVE_ITEM", payload: currentProduct }) // Dispatching a 'REMOVE_ITEM' action with the payload as the current product
                   }
                   color="error"
                   aria-label="delete"
@@ -188,7 +188,7 @@ const DetailsPage = () => {
                   aria-label="AddCircleIcon"
                   size="large"
                   onClick={() =>
-                    dispatch({ type: "INCREASE", payload: currentProduct })
+                    dispatch({ type: "INCREASE", payload: currentProduct }) // Dispatching an 'INCREASE' action with the payload as the current product
                   }
                 >
                   <AddCircleIcon fontSize="inherit" />
@@ -198,7 +198,7 @@ const DetailsPage = () => {
                   size="small"
                   variant="contained"
                   onClick={() =>
-                    dispatch({ type: "ADD_ITEM", payload: currentProduct })
+                    dispatch({ type: "ADD_ITEM", payload: currentProduct }) // Dispatching an 'ADD_ITEM' action with the payload as the current product
                   }
                 >
                   Add to card

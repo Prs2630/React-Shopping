@@ -10,7 +10,7 @@ import Card from "./Card";
 import { CardContext } from "../contexts/CardContextProvider";
 
 const ShopCard = () => {
-  const { state, dispatch } = useContext(CardContext);
+  const { state, dispatch } = useContext(CardContext); // Accessing the state and dispatch function from the CardContext
 
   return (
     <Box component="div" className="shopCard-container">
@@ -56,13 +56,13 @@ const ShopCard = () => {
               <Button
                 variant="contained"
                 color="success"
-                onClick={() => dispatch({ type: "CHECKOUT" })}
+                onClick={() => dispatch({ type: "CHECKOUT" })} // Dispatching a 'CHECKOUT' action when the checkout button is clicked
               >
                 Check Out
               </Button>
               <Button
                 variant="text"
-                onClick={() => dispatch({ type: "CLEAR" })}
+                onClick={() => dispatch({ type: "CLEAR" })} // Dispatching a 'CLEAR' action when the clear button is clicked
                 color="error"
               >
                 Clear
@@ -77,14 +77,14 @@ const ShopCard = () => {
           text: "Checked Out Successfully!",
           icon: "success",
         }),
-        (
-          <Box component="div" className="checkout-card">
-            <Typography variant="h3" color="primary" fontWeight={700}>
-              Checked Out Successfully!
-            </Typography>
-            <Link to="/products">Back to shop</Link>
-          </Box>
-        ))}
+          (
+            <Box component="div" className="checkout-card">
+              <Typography variant="h3" color="primary" fontWeight={700}>
+                Checked Out Successfully!
+              </Typography>
+              <Link to="/products">Back to shop</Link>
+            </Box>
+          ))}
 
       {!state.checkout && state.itemsCounter === 0 && (
         <Box component="div" className="empty-card">
@@ -96,7 +96,7 @@ const ShopCard = () => {
       )}
       <Box component="div">
         {state.selectedItems.map((item) => (
-          <Card key={item.id} data={item} />
+          <Card key={item.id} data={item} /> // Rendering the Card component for each selected item
         ))}
       </Box>
     </Box>
